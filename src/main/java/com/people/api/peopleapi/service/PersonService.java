@@ -1,11 +1,13 @@
 package com.people.api.peopleapi.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.people.api.peopleapi.dto.request.PersonDTO;
 import com.people.api.peopleapi.dto.response.MessageResponseDTO;
 import com.people.api.peopleapi.entity.Person;
+import com.people.api.peopleapi.exception.PersonNotFoundException;
 import com.people.api.peopleapi.mapper.PersonMapper;
 import com.people.api.peopleapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +30,18 @@ public class PersonService {
 
         Person savedPerson = personRepository.save(personToSave);
 
-        return MessageResponseDTO
-                        .builder()
-                        .message("Created person with the ID of: " + savedPerson.getId())
-                        .build();
+        return MessageResponseDTO.builder().message("Created person with the ID of: " + savedPerson.getId()).build();
     }
 
     public List<PersonDTO> listAll() {
         List<Person> allPersons = personRepository.findAll();
-        return allPersons.stream()
-                    .map(personMapper::toDTO)
-                    .collect(Collectors.toList());
+        return allPersons.stream().map(personMapper::toDTO).collect(Collectors.toList());
+    }
+
+    public PersonDTO findById(Long id) throws PersonNotFoundException {
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException(id));
+        
+        return personMapper.toDTO(person);
     }
 }
