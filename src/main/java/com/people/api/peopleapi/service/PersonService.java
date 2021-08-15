@@ -1,9 +1,7 @@
 package com.people.api.peopleapi.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
-
 import com.people.api.peopleapi.dto.request.PersonDTO;
 import com.people.api.peopleapi.dto.response.MessageResponseDTO;
 import com.people.api.peopleapi.entity.Person;
