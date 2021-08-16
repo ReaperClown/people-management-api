@@ -1,4 +1,4 @@
-<h2>API REST - People Management API</h2>
+<h2>API REST - People Management API - Spring Boot</h2>
 
 This project was developed during Bootcamp Santander Full-Stack Developer by Digital Innovation One.
 
