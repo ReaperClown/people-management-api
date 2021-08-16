@@ -25,11 +25,11 @@ To run the project, you will need:
 
 
 
-This project is avaiable to test and use on Heroku in the following link:
+<!-- This project is avaiable to test and use on Heroku in the following link:
 
 ```
 https://api-people-management.herokuapp.com/api/v1/people
-```
+``` -->
 
 
 
